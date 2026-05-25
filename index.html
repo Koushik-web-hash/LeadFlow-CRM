@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lead CRM</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <div class="bg-grid"></div>
+
+  <div class="wrapper">
+
+    <!-- Header -->
+    <header class="site-header">
+      <div class="logo-dot"></div>
+      <span class="logo-text">Lead<span class="accent">CRM</span></span>
+    </header>
+
+    <!-- Save Lead Card -->
+    <main class="card">
+      <h1 class="card-title">Capture a Lead</h1>
+      <p class="card-subtitle">Fill in the details below and save to your MongoDB pipeline.</p>
+
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" placeholder="e.g. Priya Sharma" autocomplete="off" />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="e.g. priya@example.com" autocomplete="off" />
+      </div>
+
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" placeholder="What are they interested in?"></textarea>
+      </div>
+
+      <button id="saveBtn" onclick="saveLead()">
+        <span class="btn-text">Save Lead</span>
+        <span class="btn-icon">→</span>
+      </button>
+
+      <div id="alertBox" class="alert hidden"></div>
+    </main>
+
+    <!-- Saved Leads Section -->
+    <section class="leads-section">
+      <div class="leads-header">
+        <h2>Saved Leads</h2>
+        <button class="refresh-btn" onclick="fetchLeads()">↻ Refresh</button>
+      </div>
+
+      <!-- Search Bar -->
+      <div class="search-wrap">
+        <span class="search-icon">🔍</span>
+        <input
+          type="text"
+          id="searchInput"
+          class="search-input"
+          placeholder="Search by name, email or message…"
+          oninput="searchLeads()"
+        />
+        <button class="clear-search" id="clearSearch" onclick="clearSearch()" style="display:none;">✕</button>
+      </div>
+
+      <!-- Lead count -->
+      <p class="lead-count" id="leadCount"></p>
+
+      <!-- Leads List -->
+      <div id="leadsList" class="leads-list">
+        <p class="empty-msg">No leads yet. Save one above!</p>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
